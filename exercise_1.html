@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<p style="font-family: arial">
+		Mi solucion fue usar el local storage, funciona almacenando en un objeto del almacenamiento local el valor de veces que ha sido llamada la funcion, si la pagina es actualizada el objeto del almacenamiento local sera reseteado de igual manera.
+	</p>
+</body>
+<script>
+
+	const count = function(){
+		window.onbeforeunload  = function () {
+            window.localStorage.removeItem('count');
+		};
+		c = window.localStorage;
+
+		if (c.getItem('count') == null)
+			c.setItem('count', -1);
+
+		c.setItem('count', Number(c.getItem('count')) + 1);
+
+		var res = Number(c.getItem('count'));
+		return res;
+	}
+
+console.log(count());
+console.log(count());
+console.log(count());
+
+</script>
+</html>
